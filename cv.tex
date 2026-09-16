@@ -1,0 +1,138 @@
+\documentclass[10pt,a4paper]{article}
+
+% --- BASIC CONFIGURATION ---
+\usepackage[left=0.4in, right=0.4in, top=0.35in, bottom=0.35in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage{setspace}
+
+% --- COLOR PALETTE ---
+\definecolor{primary}{HTML}{2C3E50}
+\definecolor{gray}{HTML}{555555}
+\definecolor{lightgray}{HTML}{DDDDDD}
+
+\hypersetup{colorlinks=true, linkcolor=primary, urlcolor=primary}
+
+% --- SPACING & HEADING FORMATTING ---
+\setlength{\parindent}{0pt}
+\setstretch{1.08}
+\setlist[itemize]{noitemsep, topsep=2pt, leftmargin=1.2em, itemsep=3pt}
+
+\titleformat{\section}{\large\bfseries\color{primary}}{}{0em}{}[\vspace{-0.5ex}\color{lightgray}\titlerule\vspace{1.2ex}]
+\titlespacing{\section}{0pt}{1.5ex}{0.8ex}
+
+% Custom project macro
+\newcommand{\project}[3]{
+    {\normalsize\textbf{#1}} \hfill {\footnotesize\textit{#2}} \\
+    {\footnotesize\textbf{Tech: }#3} \vspace{2pt}
+}
+
+\begin{document}
+
+% ================= HEADER =================
+\begin{center}
+    {\LARGE \textbf{\color{primary} DAO TRONG NGUYEN}} \\[3pt]
+    {\large \textbf{\color{gray} BACKEND \& SYSTEMS ENGINEER}}
+\end{center}
+\vspace{0.1cm}
+{\color{lightgray}\hrule}
+\vspace{0.2cm}
+
+% ================= BODY (2 COLUMNS) =================
+
+% LEFT COLUMN (30%)
+\begin{minipage}[t]{0.30\textwidth}
+
+    \section*{CONTACT}
+    \faPhone\ \href{tel:+84879914364}{+84 879 914 364} \\[4pt]
+    \faEnvelope\ \href{mailto:nguyen10t2lhp@gmail.com}{nguyen10t2lhp@gmail.com} \\[4pt]
+    \faGithub\ \href{https://github.com/nguyen10t2}{github.com/nguyen10t2}
+
+    \vspace{0.25cm}
+    \section*{EDUCATION}
+    \textbf{Hanoi University of Science and Technology} \\
+    Computer Engineering \\
+    CPA: \textbf{3.56} \\
+    GPA: \textbf{3.89} \\
+    \textit{\color{gray} 2023 - Present} \\[0.25cm]
+    \textbf{Le Hong Phong High School for the Gifted} \\
+    Mathematics Major \\
+    \textit{\color{gray} 2020 - 2023}
+
+    \vspace{0.25cm}
+    \section*{EXPERIENCE}
+    \textbf{VNet Joint Stock Company} \\
+    Backend Developer Intern \\
+    \textit{\color{gray} May 2024 -- Oct 2024 (5 mos)}
+
+    \vspace{0.25cm}
+    \section*{LANGUAGES}
+    \textbf{English} \\
+    TOEIC 600 (R-L)
+
+    \vspace{0.25cm}
+    \section*{CORE SKILLS}
+    \textbf{Languages:} \\
+    Rust, C/C++, Python (Intermediate) \\
+    TypeScript, Java (Basic) \\[0.15cm]
+    \textbf{Systems \& Networking:} \\
+    Linux, Network Routing (Netplan, iptables), RTOS (ESP32), QUIC (Quinn) \\[0.15cm]
+    \textbf{Backend \& Databases:} \\
+    Tokio, Axum, Bun, Node, ElysiaJs, PostgreSQL, Redis, MQTT \\[0.15cm]
+    \textbf{Systems Thinking:} \\
+    Concurrency, Low-level Memory, Zero-Copy I/O, Cache Optimization, DSP
+
+\end{minipage}%
+% VERTICAL DIVIDER RULE
+\hfill{\color{lightgray}\vrule}\hfill%
+% RIGHT COLUMN (66%)
+\begin{minipage}[t]{0.66\textwidth}
+
+    \section*{OBJECTIVE}
+    Aspiring Backend \& Systems Engineer with a deep focus on distributed systems, high concurrency, and low-latency network protocols. Passionate about leveraging systems programming (Rust, C/C++) to architect high-throughput data pipelines, network infrastructure, and resilient production backend services.
+
+    \section*{PROJECTS \& TECHNICAL RESEARCH}
+
+    \project{QUIC-Chat (vchat) - High-Performance E2EE Messaging}{VNet JSC}{Rust, QUIC (Quinn), Tokio, Rustls, SQLite, X25519/ChaCha20}
+    \begin{itemize}
+        \item Architected E2EE messaging over single QUIC/UDP connections, multiplexing control, chat, presence datagrams, and file transfer with stream-priority QoS, achieving \textbf{$>$150 MB/s} with zero head-of-line blocking.
+        \item Engineered actor-based Tokio lifecycles with zero-copy \texttt{Bytes} slicing, backpressure, and Double-Ratchet/X25519 encryption.
+    \end{itemize}
+    \vspace{0.15cm}
+
+    \project{\href{https://crates.io/crates/bamboo-core}{bamboo-core - Vietnamese IME Engine Core}}{Open Source / Crates.io}{Rust, C-FFI, WebAssembly, DFA, Zero-Allocation}
+    \begin{itemize}
+        \item Authored and published \textbf{bamboo-core} on crates.io, an ultra-fast Vietnamese Input Method Engine (IME) core in Rust supporting Telex, VNI, and VIQR.
+        \item Designed a hybrid Deterministic Finite Automaton (DFA) state machine and rule-based parser featuring a \textbf{zero-allocation hot path} for $O(1)$ syllable-level transformation.
+        \item Engineered cross-platform C-FFI and WebAssembly (WASM) interfaces for frictionless embedding into native desktop, mobile, and browser environments.
+    \end{itemize}
+    \vspace{0.15cm}
+
+    \project{\href{https://github.com/DuongAn15/DynomiteGame}{Dynomite STM32 - Embedded Bubble-Shooter Game}}{Academic / Team}{C/C++, STM32F429 (Cortex-M4), TouchGFX, DMA2D, SDRAM}
+    \begin{itemize}
+        \item Designed the \textbf{TouchGFX MVP} architecture and screen-flow state machine, separating UI rendering, game logic, and hardware abstraction.
+        \item Engineered core game physics: \textbf{hex-grid} snapping with $O(1)$ LUT neighbor lookup, \textbf{BFS Match-3} chain detection, orphan-drop, and sqrt-free squared-distance collision with \textbf{EMA} aim smoothing at 60 FPS.
+        \item Optimized CPU-bound hot paths: \textbf{sub-stepping} continuous collision to prevent tunneling, \textbf{dirty-flag} partial rendering, $O(1)$ cached egg count, LUT-based color mapping, and local grid buffer copies to minimize cache misses.
+    \end{itemize}
+    \vspace{0.15cm}
+
+    \project{\href{https://github.com/nguyen10t2/SplitDebt}{SplitDebt - Group Expense Splitting Backend}}{Personal}{TypeScript, Bun, ElysiaJS, PostgreSQL, Drizzle ORM, Redis}
+    \begin{itemize}
+        \item Built a REST API backend solving the \textbf{debt simplification problem}: greedy creditor-debtor matching algorithm minimizes the number of settlement transactions across group members.
+        \item Structured codebase into feature-based modules (users, groups, expenses, settlements) with Strategy pattern for split logic (Equal/Exact/Percentage), JWT + OAuth authentication, Redis-backed rate limiting, and Redis cache invalidation.
+    \end{itemize}
+
+    \section*{AI INTEGRATION IN DEVELOPMENT WORKFLOW}
+    \begin{itemize}
+        \item \textbf{Reverse Engineering \& R\&D:} Leveraged LLMs for parsing complex network protocol specifications (RFCs), hardware datasheets, and low-level code inspection.
+        \item \textbf{Automated QA \& Testing:} Synthesized automated test suites, concurrency regression tests, and edge-case property-based validation.
+    \end{itemize}
+
+\end{minipage}
+
+\end{document}
