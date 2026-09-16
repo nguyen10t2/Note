@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Dao Trong Nguyen — Backend & Systems Engineer</title>
 <meta name="description" content="Portfolio of Dao Trong Nguyen, Backend & Systems Engineer focused on distributed systems, high concurrency, low-latency networking with Rust." />
+<link rel="icon" type="image/svg+xml" href="public/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -77,6 +78,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:var(--backdr
 .btn-sm{padding:8px 16px;font-size:.8rem}
 #menuBtn{display:none}
 @media(max-width:860px){.nav-links{display:none}.nav-links.open{display:flex;position:absolute;top:100%;left:12px;right:12px;flex-direction:column;background:var(--surface-solid);border:1px solid var(--border);border-radius:18px;padding:10px;box-shadow:var(--shadow-lg)}#menuBtn{display:grid}}
+
+/* I18N RESILIENCE (VI diacritics + text expansion) */
+.nav-links a{white-space:nowrap}
+.nav-actions{flex-wrap:wrap;row-gap:8px}
+#langToggle{min-width:44px;justify-content:center}
+.btn{white-space:nowrap;max-width:100%}
+.hero-cta{flex-wrap:wrap}
+.hero-cta .btn{flex-shrink:0}
+.status{max-width:100%;flex-wrap:wrap}
+h2.sec-title,.contact-card h3{text-wrap:balance}
+.stat span,.metric span{display:block;overflow-wrap:anywhere}
+.metric div{min-width:0}
+html[lang="vi"] body{line-height:1.65}
+html[lang="vi"] h1,html[lang="vi"] h2.sec-title,html[lang="vi"] .contact-card h3{line-height:1.18}
+@media(max-width:480px){.hero-cta .btn{white-space:normal;text-align:center}}
+.contact-oneline{max-width:none;white-space:nowrap;font-size:.9rem}
+@media(max-width:900px){.contact-oneline{white-space:normal;max-width:640px}}
 
 /* LAYOUT */
 .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:110px 22px 60px}
@@ -205,13 +223,14 @@ footer .mono{font-family:var(--mono)}
   <div class="nav-inner">
     <a class="logo" href="#top"><span class="logo-mark">DN</span><span>Trong Nguyen<small>Backend · Systems</small></span></a>
     <div class="nav-links" id="navLinks">
-      <a href="#about">About</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+      <a href="#about" data-i18n="nav.about">About</a><a href="#skills" data-i18n="nav.skills">Skills</a><a href="#experience" data-i18n="nav.experience">Experience</a><a href="#projects" data-i18n="nav.projects">Projects</a><a href="#education" data-i18n="nav.education">Education</a><a href="#contact" data-i18n="nav.contact">Contact</a>
     </div>
     <div class="nav-actions">
-      <button id="themeToggle" class="btn btn-icon" title="Toggle theme">☀️</button>
-      <a class="btn btn-sm" href="cv.pdf" target="_blank" rel="noopener" title="View CV (PDF)">📄 CV</a>
-      <a class="btn btn-primary btn-sm" href="#contact">Hire me</a>
-      <button id="menuBtn" class="btn btn-icon" title="Menu">☰</button>
+      <button id="themeToggle" class="btn btn-icon" title="Toggle theme" data-i18n-title="nav.themeTitle">☀️</button>
+      <button id="langToggle" class="btn btn-sm" title="Chuyển sang tiếng Việt" data-i18n-title="nav.langTitle">VI</button>
+      <a class="btn btn-sm" href="cv.pdf" target="_blank" rel="noopener" title="View CV (PDF)" data-i18n-title="nav.cvTitle">📄 CV</a>
+      <a class="btn btn-primary btn-sm" href="#contact" data-i18n="nav.hire">Hire me</a>
+      <button id="menuBtn" class="btn btn-icon" title="Menu" data-i18n-title="nav.menuTitle">☰</button>
     </div>
   </div>
 </nav>
@@ -220,14 +239,14 @@ footer .mono{font-family:var(--mono)}
   <!-- HERO -->
   <header class="hero">
     <div>
-      <span class="status"><span class="dot"></span> Open to Backend / Systems roles · Hanoi, VN</span>
+      <span class="status"><span class="dot"></span> <span data-i18n="hero.status">Open to Backend / Systems roles · Hanoi, VN</span></span>
       <h1>DAO TRONG<br /><span class="grad">NGUYEN</span></h1>
       <div class="typed-row">▸ <span id="typed"></span><span class="caret"></span></div>
-      <p class="lead">Aspiring <b>Backend &amp; Systems Engineer</b> obsessed with distributed systems, high concurrency and low-latency network protocols. I build high-throughput data pipelines and resilient production backends with <b>Rust, C/C++</b> and modern TypeScript stacks.</p>
+      <p class="lead" data-i18n="hero.lead">Aspiring <b>Backend &amp; Systems Engineer</b> obsessed with distributed systems, high concurrency and low-latency network protocols. I build high-throughput data pipelines and resilient production backends with <b>Rust, C/C++</b> and modern TypeScript stacks.</p>
       <div class="hero-cta">
-        <a href="#projects" class="btn btn-primary">View projects ↓</a>
-        <a href="cv.pdf" class="btn" target="_blank" rel="noopener">📄 View CV (.pdf)</a>
-        <a href="mailto:nguyen10t2lhp@gmail.com" class="btn">✉ Get in touch</a>
+        <a href="#projects" class="btn btn-primary" data-i18n="hero.viewProjects">View projects ↓</a>
+        <a href="cv.pdf" class="btn" target="_blank" rel="noopener" data-i18n="hero.viewCv">📄 View CV (.pdf)</a>
+        <a href="mailto:nguyen10t2lhp@gmail.com" class="btn" data-i18n="hero.getInTouch">✉ Get in touch</a>
       </div>
       <div class="hero-social">
         <a class="chip" href="https://github.com/nguyen10t2" target="_blank" rel="noopener">gh — github.com/nguyen10t2</a>
@@ -236,10 +255,10 @@ footer .mono{font-family:var(--mono)}
         <a class="chip" href="cv.tex" target="_blank" rel="noopener">.tex source</a>
       </div>
       <div class="stats">
-        <div class="stat"><b>&gt;150 MB/s</b><span>QUIC file throughput, zero HOL blocking</span></div>
-        <div class="stat"><b>O(1)</b><span>Zero-alloc IME hot path · hex-grid LUT</span></div>
-        <div class="stat"><b>3.89 GPA</b><span>HUST Computer Engineering</span></div>
-        <div class="stat"><b>5 mos</b><span>Backend intern @ VNet JSC</span></div>
+        <div class="stat"><b>&gt;150 MB/s</b><span data-i18n="hero.stat1">QUIC file throughput, zero HOL blocking</span></div>
+        <div class="stat"><b>O(1)</b><span data-i18n="hero.stat2">Zero-alloc IME hot path · hex-grid LUT</span></div>
+        <div class="stat"><b>3.89 GPA</b><span data-i18n="hero.stat3">HUST Computer Engineering</span></div>
+        <div class="stat"><b>5 mos</b><span data-i18n="hero.stat4">Backend intern @ VNet JSC</span></div>
       </div>
     </div>
     <div class="hero-card">
@@ -256,7 +275,7 @@ footer .mono{font-family:var(--mono)}
       </div>
       <div class="avatar-row">
         <div class="avatar">DN</div>
-        <div><b>Dao Trong Nguyen</b><span>Hanoi, Vietnam · TOEIC 600 (R-L)</span></div>
+        <div><b>Dao Trong Nguyen</b><span data-i18n="hero.avatarSub">Hanoi, Vietnam · TOEIC 600 (R-L)</span></div>
       </div>
     </div>
   </header>
@@ -265,17 +284,17 @@ footer .mono{font-family:var(--mono)}
 
   <!-- ABOUT -->
   <section id="about" class="reveal">
-    <div class="eyebrow">01 · About</div>
-    <h2 class="sec-title">Systems thinking, production mindset.</h2>
-    <p class="sec-desc">I care about what happens under the hood — concurrency models, memory layout, cache behavior, backpressure — and turn that into backends that stay fast under load.</p>
+    <div class="eyebrow" data-i18n="about.eyebrow">01 · About</div>
+    <h2 class="sec-title" data-i18n="about.title">Systems thinking, production mindset.</h2>
+    <p class="sec-desc" data-i18n="about.desc">I care about what happens under the hood — concurrency models, memory layout, cache behavior, backpressure — and turn that into backends that stay fast under load.</p>
     <div class="grid2">
-      <div class="card"><h3>◈ Objective</h3><p>Aspiring Backend &amp; Systems Engineer with a deep focus on distributed systems, high concurrency, and low-latency network protocols. Passionate about leveraging systems programming (Rust, C/C++) to architect high-throughput data pipelines, network infrastructure, and resilient production backend services.</p>
+      <div class="card"><h3 data-i18n="about.objTitle">◈ Objective</h3><p data-i18n="about.objDesc">Aspiring Backend &amp; Systems Engineer with a deep focus on distributed systems, high concurrency, and low-latency network protocols. Passionate about leveraging systems programming (Rust, C/C++) to architect high-throughput data pipelines, network infrastructure, and resilient production backend services.</p>
         <div class="tags"><span class="tag">Distributed systems</span><span class="tag gold">Low-latency</span><span class="tag teal">High-throughput</span></div>
       </div>
-      <div class="card"><h3>✦ How I use AI in my workflow</h3>
+      <div class="card"><h3 data-i18n="about.aiTitle">✦ How I use AI in my workflow</h3>
         <ul>
-          <li><b>Reverse engineering &amp; R&amp;D:</b> parsing RFCs, hardware datasheets and low-level code with LLM assistance.</li>
-          <li><b>Automated QA &amp; testing:</b> synthesizing test suites, concurrency regression tests and property-based edge cases.</li>
+          <li data-i18n="about.aiLi1"><b>Reverse engineering &amp; R&amp;D:</b> parsing RFCs, hardware datasheets and low-level code with LLM assistance.</li>
+          <li data-i18n="about.aiLi2"><b>Automated QA &amp; testing:</b> synthesizing test suites, concurrency regression tests and property-based edge cases.</li>
         </ul>
         <div class="tags"><span class="tag">RFC parsing</span><span class="tag gold">Property-based tests</span><span class="tag teal">Concurrency regressions</span></div>
       </div>
@@ -284,38 +303,38 @@ footer .mono{font-family:var(--mono)}
 
   <!-- SKILLS -->
   <section id="skills" class="reveal">
-    <div class="eyebrow">02 · Core skills</div>
-    <h2 class="sec-title">A backend engineer with a systems core.</h2>
-    <p class="sec-desc">From bare-metal C to async Rust to TypeScript APIs — one mental model: bytes, concurrency, failure modes.</p>
+    <div class="eyebrow" data-i18n="skills.eyebrow">02 · Core skills</div>
+    <h2 class="sec-title" data-i18n="skills.title">A backend engineer with a systems core.</h2>
+    <p class="sec-desc" data-i18n="skills.desc">From bare-metal C to async Rust to TypeScript APIs — one mental model: bytes, concurrency, failure modes.</p>
     <div class="grid2">
-      <div class="card"><div class="skill-ico">🦀</div><h3>Languages</h3><div class="meta">primary → working knowledge</div><div class="tags"><span class="tag">Rust</span><span class="tag">C / C++</span><span class="tag">Python (intermediate)</span><span class="tag gold">TypeScript</span><span class="tag gold">Java (basic)</span></div></div>
-      <div class="card"><div class="skill-ico">🌐</div><h3>Systems &amp; Networking</h3><div class="meta">linux · protocols · embedded</div><div class="tags"><span class="tag teal">Linux</span><span class="tag teal">Netplan / iptables routing</span><span class="tag teal">RTOS (ESP32)</span><span class="tag">QUIC (Quinn)</span><span class="tag">Rustls</span></div></div>
-      <div class="card"><div class="skill-ico">⚙️</div><h3>Backend &amp; Databases</h3><div class="meta">async runtimes → data layer</div><div class="tags"><span class="tag">Tokio</span><span class="tag">Axum</span><span class="tag gold">Bun</span><span class="tag gold">Node / ElysiaJS</span><span class="tag teal">PostgreSQL</span><span class="tag teal">Redis</span><span class="tag teal">MQTT</span><span class="tag">Drizzle ORM</span></div></div>
-      <div class="card"><div class="skill-ico">🧠</div><h3>Systems thinking</h3><div class="meta">the things that survive load</div><div class="tags"><span class="tag">Concurrency</span><span class="tag">Low-level memory</span><span class="tag">Zero-copy I/O</span><span class="tag gold">Cache optimization</span><span class="tag gold">DSP</span><span class="tag teal">Backpressure</span></div></div>
+      <div class="card"><div class="skill-ico">🦀</div><h3 data-i18n="skills.langTitle">Languages</h3><div class="meta" data-i18n="skills.langMeta">primary → working knowledge</div><div class="tags"><span class="tag">Rust</span><span class="tag">C / C++</span><span class="tag">Python (intermediate)</span><span class="tag gold">TypeScript</span><span class="tag gold">Java (basic)</span></div></div>
+      <div class="card"><div class="skill-ico">🌐</div><h3 data-i18n="skills.sysTitle">Systems &amp; Networking</h3><div class="meta" data-i18n="skills.sysMeta">linux · protocols · embedded</div><div class="tags"><span class="tag teal">Linux</span><span class="tag teal">Netplan / iptables routing</span><span class="tag teal">RTOS (ESP32)</span><span class="tag">QUIC (Quinn)</span><span class="tag">Rustls</span></div></div>
+      <div class="card"><div class="skill-ico">⚙️</div><h3 data-i18n="skills.beTitle">Backend &amp; Databases</h3><div class="meta" data-i18n="skills.beMeta">async runtimes → data layer</div><div class="tags"><span class="tag">Tokio</span><span class="tag">Axum</span><span class="tag gold">Bun</span><span class="tag gold">Node / ElysiaJS</span><span class="tag teal">PostgreSQL</span><span class="tag teal">Redis</span><span class="tag teal">MQTT</span><span class="tag">Drizzle ORM</span></div></div>
+      <div class="card"><div class="skill-ico">🧠</div><h3 data-i18n="skills.thinkTitle">Systems thinking</h3><div class="meta" data-i18n="skills.thinkMeta">the things that survive load</div><div class="tags"><span class="tag">Concurrency</span><span class="tag">Low-level memory</span><span class="tag">Zero-copy I/O</span><span class="tag gold">Cache optimization</span><span class="tag gold">DSP</span><span class="tag teal">Backpressure</span></div></div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience" class="reveal">
-    <div class="eyebrow">03 · Experience</div>
-    <h2 class="sec-title">Where I've shipped.</h2>
+    <div class="eyebrow" data-i18n="exp.eyebrow">03 · Experience</div>
+    <h2 class="sec-title" data-i18n="exp.title">Where I've shipped.</h2>
     <div class="timeline">
       <div class="tl-item"><div class="tl-card">
-        <time>May 2024 — Oct 2024 · 5 mos · Hanoi</time>
-        <h3>Backend Developer Intern</h3><div class="where">VNet Joint Stock Company</div>
+        <time data-i18n="exp.job1Time">May 2024 — Oct 2024 · 5 mos · Hanoi</time>
+        <h3 data-i18n="exp.job1Title">Backend Developer Intern</h3><div class="where">VNet Joint Stock Company</div>
         <ul>
-          <li>Architected <b>QUIC-Chat (vchat)</b>: E2EE messaging multiplexing control, chat, presence datagrams and file transfer over a single QUIC/UDP connection.</li>
-          <li>Stream-priority QoS + Threema-inspired blob streaming, <b>&gt;150 MB/s</b> with zero head-of-line blocking.</li>
-          <li>Actor-based Tokio lifecycles, zero-copy <span style="font-family:var(--mono)">Bytes</span> slicing, backpressure, Double-Ratchet/X25519.</li>
+          <li data-i18n="exp.job1Li1">Architected <b>QUIC-Chat (vchat)</b>: E2EE messaging multiplexing control, chat, presence datagrams and file transfer over a single QUIC/UDP connection.</li>
+          <li data-i18n="exp.job1Li2">Stream-priority QoS + Threema-inspired blob streaming, <b>&gt;150 MB/s</b> with zero head-of-line blocking.</li>
+          <li data-i18n="exp.job1Li3">Actor-based Tokio lifecycles, zero-copy <span style="font-family:var(--mono)">Bytes</span> slicing, backpressure, Double-Ratchet/X25519.</li>
         </ul>
         <div class="tags"><span class="tag">Rust</span><span class="tag">Quinn / QUIC</span><span class="tag">Tokio</span><span class="tag">SQLite</span><span class="tag gold">X25519 / ChaCha20</span></div>
       </div></div>
       <div class="tl-item"><div class="tl-card">
-        <time>2023 — Present · Open source</time>
-        <h3>Independent builder &amp; researcher</h3><div class="where">bamboo-core · SplitDebt · Dynomite STM32</div>
+        <time data-i18n="exp.job2Time">2023 — Present · Open source</time>
+        <h3 data-i18n="exp.job2Title">Independent builder &amp; researcher</h3><div class="where">bamboo-core · SplitDebt · Dynomite STM32</div>
         <ul>
-          <li>Published a Rust crate to <b>crates.io</b>, built a group-expense backend with debt-simplification, and an STM32 game engine at 60 FPS.</li>
-          <li>Workflow: RFC/datasheet R&amp;D with LLMs → systems design → property-based + concurrency regression tests.</li>
+          <li data-i18n="exp.job2Li1">Published a Rust crate to <b>crates.io</b>, built a group-expense backend with debt-simplification, and an STM32 game engine at 60 FPS.</li>
+          <li data-i18n="exp.job2Li2">Workflow: RFC/datasheet R&amp;D with LLMs → systems design → property-based + concurrency regression tests.</li>
         </ul>
       </div></div>
     </div>
@@ -323,96 +342,96 @@ footer .mono{font-family:var(--mono)}
 
   <!-- PROJECTS -->
   <section id="projects" class="reveal">
-    <div class="eyebrow">04 · Projects &amp; research</div>
-    <h2 class="sec-title">Things built to be fast.</h2>
-    <p class="sec-desc">Four systems I designed end-to-end — protocol, engine, embedded and API. Each one has a number I'm proud of.</p>
+    <div class="eyebrow" data-i18n="proj.eyebrow">04 · Projects &amp; research</div>
+    <h2 class="sec-title" data-i18n="proj.title">Things built to be fast.</h2>
+    <p class="sec-desc" data-i18n="proj.desc">Four systems I designed end-to-end — protocol, engine, embedded and API. Each one has a number I'm proud of.</p>
     <div class="proj-grid">
       <article class="card proj">
         <div class="proj-top"><span class="proj-num">★ Flagship</span><span class="proj-org">VNet JSC</span></div>
         <h3>QUIC-Chat (vchat) — High-performance E2EE messaging</h3>
         <div class="tags"><span class="tag">Rust</span><span class="tag">QUIC (Quinn)</span><span class="tag">Tokio</span><span class="tag">Rustls</span><span class="tag">SQLite</span><span class="tag gold">X25519 / ChaCha20</span></div>
         <ul>
-          <li>Multiplexed control, real-time chat, unreliable datagrams (presence/typing) + file transfer over single QUIC/UDP connections.</li>
-          <li>Stream priority QoS (Control=90, Chat=80, File=0) + blob streaming — <b>&gt;150 MB/s</b>, zero head-of-line blocking.</li>
-          <li>Actor-based connection lifecycles, zero-copy <span style="font-family:var(--mono)">Bytes</span>, robust backpressure, Double-Ratchet E2EE.</li>
+          <li data-i18n="proj.p1Li1">Multiplexed control, real-time chat, unreliable datagrams (presence/typing) + file transfer over single QUIC/UDP connections.</li>
+          <li data-i18n="proj.p1Li2">Stream priority QoS (Control=90, Chat=80, File=0) + blob streaming — <b>&gt;150 MB/s</b>, zero head-of-line blocking.</li>
+          <li data-i18n="proj.p1Li3">Actor-based connection lifecycles, zero-copy <span style="font-family:var(--mono)">Bytes</span>, robust backpressure, Double-Ratchet E2EE.</li>
         </ul>
-        <div class="metric"><div><b>>150 MB/s</b><span>file transfer</span></div><div><b>4-in-1</b><span>streams, 1 connection</span></div><div><b>0</b><span>head-of-line blocking</span></div></div>
+        <div class="metric"><div><b>>150 MB/s</b><span data-i18n="proj.p1M1">file transfer</span></div><div><b>4-in-1</b><span data-i18n="proj.p1M2">streams, 1 connection</span></div><div><b>0</b><span data-i18n="proj.p1M3">head-of-line blocking</span></div></div>
       </article>
       <article class="card proj">
         <div class="proj-top"><span class="proj-num">📦 crates.io</span><span class="proj-org">Open source</span></div>
         <h3><a href="https://crates.io/crates/bamboo-core" target="_blank" rel="noopener">bamboo-core — Vietnamese IME Engine Core ↗</a></h3>
         <div class="tags"><span class="tag">Rust</span><span class="tag">C-FFI</span><span class="tag">WebAssembly</span><span class="tag gold">DFA</span><span class="tag gold">Zero-allocation</span></div>
         <ul>
-          <li>Ultra-fast Vietnamese IME core supporting <b>Telex, VNI, VIQR</b>, published on crates.io.</li>
-          <li>Hybrid DFA state machine + rule-based parser with <b>zero-allocation hot path</b>, O(1) syllable transform.</li>
-          <li>C-FFI + WASM interfaces for desktop, mobile and browser embedding.</li>
+          <li data-i18n="proj.p2Li1">Ultra-fast Vietnamese IME core supporting <b>Telex, VNI, VIQR</b>, published on crates.io.</li>
+          <li data-i18n="proj.p2Li2">Hybrid DFA state machine + rule-based parser with <b>zero-allocation hot path</b>, O(1) syllable transform.</li>
+          <li data-i18n="proj.p2Li3">C-FFI + WASM interfaces for desktop, mobile and browser embedding.</li>
         </ul>
-        <div class="metric"><div><b>O(1)</b><span>syllable transform</span></div><div><b>0-alloc</b><span>hot path</span></div><div><b>3</b><span>input methods</span></div></div>
-        <div class="proj-links"><a class="btn btn-sm" href="https://crates.io/crates/bamboo-core" target="_blank" rel="noopener">View crate ↗</a></div>
+        <div class="metric"><div><b>O(1)</b><span data-i18n="proj.p2M1">syllable transform</span></div><div><b>0-alloc</b><span data-i18n="proj.p2M2">hot path</span></div><div><b>3</b><span data-i18n="proj.p2M3">input methods</span></div></div>
+        <div class="proj-links"><a class="btn btn-sm" href="https://crates.io/crates/bamboo-core" target="_blank" rel="noopener" data-i18n="proj.viewCrate">View crate ↗</a></div>
       </article>
       <article class="card proj">
-        <div class="proj-top"><span class="proj-num">🎮 Embedded</span><span class="proj-org">Academic / Team</span></div>
+        <div class="proj-top"><span class="proj-num" data-i18n="proj.embeddedBadge">🎮 Embedded</span><span class="proj-org" data-i18n="proj.academicOrg">Academic / Team</span></div>
         <h3><a href="https://github.com/DuongAn15/DynomiteGame" target="_blank" rel="noopener">Dynomite STM32 — Embedded bubble-shooter game ↗</a></h3>
         <div class="tags"><span class="tag">C / C++</span><span class="tag">STM32F429 (Cortex-M4)</span><span class="tag">TouchGFX</span><span class="tag gold">DMA2D</span><span class="tag gold">SDRAM</span></div>
         <ul>
-          <li><b>TouchGFX MVP</b> architecture + screen-flow state machine separating UI, logic and HAL.</li>
-          <li>Hex-grid snapping with O(1) LUT neighbors, <b>BFS Match-3</b>, orphan-drop, sqrt-free collision + EMA aim smoothing at <b>60 FPS</b>.</li>
-          <li>Sub-stepped continuous collision, dirty-flag rendering, O(1) cached counts, LUT color maps, cache-friendly grid buffers.</li>
+          <li data-i18n="proj.p3Li1"><b>TouchGFX MVP</b> architecture + screen-flow state machine separating UI, logic and HAL.</li>
+          <li data-i18n="proj.p3Li2">Hex-grid snapping with O(1) LUT neighbors, <b>BFS Match-3</b>, orphan-drop, sqrt-free collision + EMA aim smoothing at <b>60 FPS</b>.</li>
+          <li data-i18n="proj.p3Li3">Sub-stepped continuous collision, dirty-flag rendering, O(1) cached counts, LUT color maps, cache-friendly grid buffers.</li>
         </ul>
-        <div class="metric"><div><b>60 FPS</b><span>on Cortex-M4</span></div><div><b>O(1)</b><span>LUT neighbor lookup</span></div><div><b>BFS</b><span>match-3 chains</span></div></div>
-        <div class="proj-links"><a class="btn btn-sm" href="https://github.com/DuongAn15/DynomiteGame" target="_blank" rel="noopener">View repo ↗</a></div>
+        <div class="metric"><div><b>60 FPS</b><span data-i18n="proj.p3M1">on Cortex-M4</span></div><div><b>O(1)</b><span data-i18n="proj.p3M2">LUT neighbor lookup</span></div><div><b>BFS</b><span data-i18n="proj.p3M3">match-3 chains</span></div></div>
+        <div class="proj-links"><a class="btn btn-sm" href="https://github.com/DuongAn15/DynomiteGame" target="_blank" rel="noopener" data-i18n="proj.viewRepo">View repo ↗</a></div>
       </article>
       <article class="card proj">
-        <div class="proj-top"><span class="proj-num">💸 Backend</span><span class="proj-org">Personal</span></div>
+        <div class="proj-top"><span class="proj-num">💸 Backend</span><span class="proj-org" data-i18n="proj.personalOrg">Personal</span></div>
         <h3><a href="https://github.com/nguyen10t2/SplitDebt" target="_blank" rel="noopener">SplitDebt — Group expense splitting backend ↗</a></h3>
         <div class="tags"><span class="tag">TypeScript</span><span class="tag">Bun</span><span class="tag">ElysiaJS</span><span class="tag teal">PostgreSQL</span><span class="tag teal">Drizzle ORM</span><span class="tag teal">Redis</span></div>
         <ul>
-          <li>REST API solving <b>debt simplification</b>: greedy creditor-debtor matching minimizes settlement transactions.</li>
-          <li>Feature modules (users, groups, expenses, settlements), Strategy pattern for splits (Equal / Exact / Percentage).</li>
-          <li>JWT + OAuth auth, Redis rate limiting + cache invalidation.</li>
+          <li data-i18n="proj.p4Li1">REST API solving <b>debt simplification</b>: greedy creditor-debtor matching minimizes settlement transactions.</li>
+          <li data-i18n="proj.p4Li2">Feature modules (users, groups, expenses, settlements), Strategy pattern for splits (Equal / Exact / Percentage).</li>
+          <li data-i18n="proj.p4Li3">JWT + OAuth auth, Redis rate limiting + cache invalidation.</li>
         </ul>
-        <div class="metric"><div><b>min-tx</b><span>greedy settlement</span></div><div><b>3</b><span>split strategies</span></div><div><b>JWT+</b><span>OAuth · Redis RL</span></div></div>
-        <div class="proj-links"><a class="btn btn-sm" href="https://github.com/nguyen10t2/SplitDebt" target="_blank" rel="noopener">View repo ↗</a></div>
+        <div class="metric"><div><b>min-tx</b><span data-i18n="proj.p4M1">greedy settlement</span></div><div><b>3</b><span data-i18n="proj.p4M2">split strategies</span></div><div><b>JWT+</b><span>OAuth · Redis RL</span></div></div>
+        <div class="proj-links"><a class="btn btn-sm" href="https://github.com/nguyen10t2/SplitDebt" target="_blank" rel="noopener" data-i18n="proj.viewRepo">View repo ↗</a></div>
       </article>
     </div>
   </section>
 
   <!-- EDUCATION -->
   <section id="education" class="reveal">
-    <div class="eyebrow">05 · Education &amp; languages</div>
-    <h2 class="sec-title">Foundations.</h2>
+    <div class="eyebrow" data-i18n="edu.eyebrow">05 · Education &amp; languages</div>
+    <h2 class="sec-title" data-i18n="edu.title">Foundations.</h2>
     <div class="grid3">
-      <div class="card"><h3>🎓 HUST</h3><div class="meta">2023 — Present</div><p><b>Hanoi University of Science and Technology</b><br />Computer Engineering<br />CPA: <b>3.56</b> · GPA: <b>3.89</b></p></div>
-      <div class="card"><h3>∑ Gifted High School</h3><div class="meta">2020 — 2023</div><p><b>Le Hong Phong High School for the Gifted</b><br />Mathematics Major</p></div>
-      <div class="card"><h3>🌍 English</h3><div class="meta">TOEIC 600 (R-L)</div><p>Comfortable reading RFCs, datasheets and technical docs; daily working English for code, reviews and research.</p><div class="tags"><span class="tag teal">Technical reading</span><span class="tag">Documentation</span></div></div>
+      <div class="card"><h3>🎓 HUST</h3><div class="meta" data-i18n="edu.hustTime">2023 — Present</div><p data-i18n="edu.hustDesc"><b>Hanoi University of Science and Technology</b><br />Computer Engineering<br />CPA: <b>3.56</b> · GPA: <b>3.89</b></p></div>
+      <div class="card"><h3>∑ Gifted High School</h3><div class="meta">2020 — 2023</div><p data-i18n="edu.hsDesc"><b>Le Hong Phong High School for the Gifted</b><br />Mathematics Major</p></div>
+      <div class="card"><h3 data-i18n="edu.engTitle">🌍 English</h3><div class="meta">TOEIC 600 (R-L)</div><p data-i18n="edu.engDesc">Comfortable reading RFCs, datasheets and technical docs; daily working English for code, reviews and research.</p><div class="tags"><span class="tag teal">Technical reading</span><span class="tag">Documentation</span></div></div>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" class="reveal">
-    <div class="eyebrow">06 · Contact</div>
+    <div class="eyebrow" data-i18n="contact.eyebrow">06 · Contact</div>
     <div class="contact-card">
-      <h3>Let's build something <span>fast &amp; reliable.</span></h3>
-      <p class="sec-desc" style="margin:12px auto 0;text-align:center">Internships, backend/systems roles, or just talking QUIC, Rust and distributed systems — my inbox is open.</p>
+      <h3 data-i18n="contact.title">Let's build something <span>fast &amp; reliable.</span></h3>
+      <p class="sec-desc contact-oneline" style="margin:12px auto 0;text-align:center" data-i18n="contact.desc">Internships, backend/systems roles, or QUIC/Rust talk — my inbox is open.</p>
       <div class="contact-grid">
         <a class="contact-item" href="mailto:nguyen10t2lhp@gmail.com"><small>Email</small><b>nguyen10t2lhp@gmail.com</b></a>
         <a class="contact-item" href="tel:+84879914364"><small>Phone</small><b>+84 879 914 364</b></a>
         <a class="contact-item" href="https://github.com/nguyen10t2" target="_blank" rel="noopener"><small>GitHub</small><b>github.com/nguyen10t2</b></a>
       </div>
       <div class="hero-cta" style="justify-content:center">
-        <a href="mailto:nguyen10t2lhp@gmail.com" class="btn btn-primary">✉ Say hello</a>
-        <button class="btn" id="copyEmail">⧉ Copy email</button>
+        <a href="mailto:nguyen10t2lhp@gmail.com" class="btn btn-primary" data-i18n="contact.sayHello">✉ Say hello</a>
+        <button class="btn" id="copyEmail" data-i18n="contact.copyEmail">⧉ Copy email</button>
         <a href="https://github.com/nguyen10t2" target="_blank" rel="noopener" class="btn">GitHub ↗</a>
       </div>
     </div>
     <footer>
-      <span>© <span id="year"></span> Dao Trong Nguyen · Built as a single HTML file.</span>
+      <span data-i18n="contact.footer">© <span id="year"></span> Dao Trong Nguyen · Built as a single HTML file.</span>
       <span class="mono">rust · quic · tokio · postgres · redis</span>
     </footer>
   </section>
 </div>
 
-<button id="toTop" class="btn btn-icon" title="Back to top">↑</button>
+<button id="toTop" class="btn btn-icon" title="Back to top" data-i18n-title="contact.toTop">↑</button>
 
 <script>
 /* Particles */
@@ -426,8 +445,10 @@ for(let i=0;i<N;i++)pts.push(mk());
 (()=>{const el=document.getElementById('cursorGlow');let mx=-500,my=-500,cx=-500,cy=-500;document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;el.classList.add('active')});(function t(){cx+=(mx-cx)*.08;cy+=(my-cy)*.08;el.style.transform=`translate(${cx-250}px,${cy-250}px)`;requestAnimationFrame(t)})})();
 /* Marquee */
 (()=>{const items=['RUST','TOKIO','QUIC / QUINN','AXUM','C / C++','STM32','TYPESCRIPT','BUN','ELYSIAJS','POSTGRESQL','REDIS','MQTT','WASM','ZERO-COPY I/O'];const half=items.map(t=>`<span><b>✦</b> ${t}</span>`).join('');document.getElementById('marquee').innerHTML=half+half})();
-/* Typing */
-(()=>{const words=['distributed systems.','high concurrency.','low-latency QUIC networking.','async Rust + Tokio.','zero-copy I/O.','resilient production backends.'];const el=document.getElementById('typed');let w=0,ch=0,del=false;function tick(){const word=words[w];el.textContent=word.slice(0,ch);if(!del){ch++;if(ch>word.length){del=true;return setTimeout(tick,1400)}}else{ch--;if(ch===0){del=false;w=(w+1)%words.length}}setTimeout(tick,del?32:62)}tick()})();
+/* Typing (lang-aware, restartable) */
+let typedTimer=null;
+function startTyping(words){const el=document.getElementById('typed');if(!el)return;clearTimeout(typedTimer);let w=0,ch=0,del=false;function tick(){const word=words[w];el.textContent=word.slice(0,ch);if(!del){ch++;if(ch>word.length){del=true;typedTimer=setTimeout(tick,1400);return}}else{ch--;if(ch===0){del=false;w=(w+1)%words.length}}typedTimer=setTimeout(tick,del?32:62)}tick()}
+
 /* Reveal */
 (()=>{const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>io.observe(el))})();
 /* Nav active + toTop */
@@ -439,9 +460,146 @@ document.getElementById('menuBtn').onclick=()=>document.getElementById('navLinks
 document.querySelectorAll('.nav-links a').forEach(a=>a.onclick=()=>document.getElementById('navLinks').classList.remove('open'));
 /* Theme */
 (()=>{const t=document.getElementById('themeToggle');function apply(v){document.documentElement.setAttribute('data-theme',v);t.textContent=v==='dark'?'☀️':'🌙';localStorage.setItem('portfolio_theme',v)}t.onclick=()=>apply(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark');apply(localStorage.getItem('portfolio_theme')||'dark')})();
-/* Copy + year */
-document.getElementById('copyEmail').onclick=async e=>{try{await navigator.clipboard.writeText('nguyen10t2lhp@gmail.com');e.target.textContent='✓ Copied!';setTimeout(()=>e.target.textContent='⧉ Copy email',1800)}catch{location.href='mailto:nguyen10t2lhp@gmail.com'}};
+/* ===== I18N (single-file, no dependency) =====
+   Convention:
+   - [data-i18n="key"] -> innerHTML = I18N[lang][key]
+   - [data-i18n-title="key"] -> title attr (tooltip).
+   - Source of truth is this inline dict (no en.json/vi.json by design:
+     2 langs, zero extra request, zero FOUC, works on file:// + Pages).
+   GLOSSARY (giữ nguyên trong câu VI, không dịch):
+   - Backend, systems, distributed systems -> "hệ phân tán", concurrency,
+     backpressure, zero-copy, throughput, production, E2EE, QUIC, Tokio,
+     RFC, datasheet, HAL, cache, actor, blob streaming, hot path.
+   TONE: chuyên nghiệp, gọn. Xưng "tôi". Câu chủ động, ngắn.
+   BUDGET (không ép EN==VI ký tự; VI đoạn dài được +30%):
+   - nav item <=12, button <=20, status pill <=55, sec-title <=40,
+     stat/metric span <=30, card li <=180 chars. Slot ngắn tràn
+     -> viết lại câu VI cho gọn, không nhồi chữ.
+*/
+const I18N={
+en:{
+'meta.title':'Dao Trong Nguyen — Backend & Systems Engineer',
+'meta.desc':'Portfolio of Dao Trong Nguyen, Backend & Systems Engineer focused on distributed systems, high concurrency, low-latency networking with Rust.',
+'nav.about':'About','nav.skills':'Skills','nav.experience':'Experience','nav.projects':'Projects','nav.education':'Education','nav.contact':'Contact','nav.hire':'Hire me',
+'nav.themeTitle':'Toggle theme','nav.langTitle':'Chuyển sang tiếng Việt','nav.cvTitle':'View CV (PDF)','nav.menuTitle':'Menu',
+'hero.status':'Open to Backend / Systems roles · Hanoi, VN',
+'hero.lead':'Aspiring <b>Backend &amp; Systems Engineer</b> obsessed with distributed systems, high concurrency and low-latency network protocols. I build high-throughput data pipelines and resilient production backends with <b>Rust, C/C++</b> and modern TypeScript stacks.',
+'hero.viewProjects':'View projects ↓','hero.viewCv':'📄 View CV (.pdf)','hero.getInTouch':'✉ Get in touch',
+'hero.stat1':'QUIC file throughput, zero HOL blocking','hero.stat2':'Zero-alloc IME hot path · hex-grid LUT','hero.stat3':'HUST Computer Engineering','hero.stat4':'Backend intern @ VNet JSC',
+'hero.avatarSub':'Hanoi, Vietnam · TOEIC 600 (R-L)',
+'typed.words':['distributed systems.','high concurrency.','low-latency QUIC networking.','async Rust + Tokio.','zero-copy I/O.','resilient production backends.'],
+'about.eyebrow':'01 · About','about.title':'Systems thinking, production mindset.','about.desc':'I care about what happens under the hood — concurrency models, memory layout, cache behavior, backpressure — and turn that into backends that stay fast under load.',
+'about.objTitle':'◈ Objective','about.objDesc':'Aspiring Backend &amp; Systems Engineer with a deep focus on distributed systems, high concurrency, and low-latency network protocols. Passionate about leveraging systems programming (Rust, C/C++) to architect high-throughput data pipelines, network infrastructure, and resilient production backend services.',
+'about.aiTitle':'✦ How I use AI in my workflow','about.aiLi1':'<b>Reverse engineering &amp; R&amp;D:</b> parsing RFCs, hardware datasheets and low-level code with LLM assistance.','about.aiLi2':'<b>Automated QA &amp; testing:</b> synthesizing test suites, concurrency regression tests and property-based edge cases.',
+'skills.eyebrow':'02 · Core skills','skills.title':'A backend engineer with a systems core.','skills.desc':'From bare-metal C to async Rust to TypeScript APIs — one mental model: bytes, concurrency, failure modes.',
+'skills.langTitle':'Languages','skills.langMeta':'primary → working knowledge','skills.sysTitle':'Systems &amp; Networking','skills.sysMeta':'linux · protocols · embedded','skills.beTitle':'Backend &amp; Databases','skills.beMeta':'async runtimes → data layer','skills.thinkTitle':'Systems thinking','skills.thinkMeta':'the things that survive load',
+'exp.eyebrow':'03 · Experience','exp.title':"Where I've shipped.",
+'exp.job1Time':'May 2024 — Oct 2024 · 5 mos · Hanoi','exp.job1Title':'Backend Developer Intern',
+'exp.job1Li1':'Architected <b>QUIC-Chat (vchat)</b>: E2EE messaging multiplexing control, chat, presence datagrams and file transfer over a single QUIC/UDP connection.',
+'exp.job1Li2':'Stream-priority QoS + Threema-inspired blob streaming, <b>&gt;150 MB/s</b> with zero head-of-line blocking.',
+'exp.job1Li3':'Actor-based Tokio lifecycles, zero-copy <span style="font-family:var(--mono)">Bytes</span> slicing, backpressure, Double-Ratchet/X25519.',
+'exp.job2Time':'2023 — Present · Open source','exp.job2Title':'Independent builder &amp; researcher',
+'exp.job2Li1':'Published a Rust crate to <b>crates.io</b>, built a group-expense backend with debt-simplification, and an STM32 game engine at 60 FPS.',
+'exp.job2Li2':'Workflow: RFC/datasheet R&amp;D with LLMs → systems design → property-based + concurrency regression tests.',
+'proj.eyebrow':'04 · Projects &amp; research','proj.title':'Things built to be fast.','proj.desc':'Four systems I designed end-to-end — protocol, engine, embedded and API. Each one has a number I\'m proud of.',
+'proj.p1Li1':'Multiplexed control, real-time chat, unreliable datagrams (presence/typing) + file transfer over single QUIC/UDP connections.',
+'proj.p1Li2':'Stream priority QoS (Control=90, Chat=80, File=0) + blob streaming — <b>&gt;150 MB/s</b>, zero head-of-line blocking.',
+'proj.p1Li3':'Actor-based connection lifecycles, zero-copy <span style="font-family:var(--mono)">Bytes</span>, robust backpressure, Double-Ratchet E2EE.',
+'proj.p1M1':'file transfer','proj.p1M2':'streams, 1 connection','proj.p1M3':'head-of-line blocking',
+'proj.p2Li1':'Ultra-fast Vietnamese IME core supporting <b>Telex, VNI, VIQR</b>, published on crates.io.',
+'proj.p2Li2':'Hybrid DFA state machine + rule-based parser with <b>zero-allocation hot path</b>, O(1) syllable transform.',
+'proj.p2Li3':'C-FFI + WASM interfaces for desktop, mobile and browser embedding.',
+'proj.p2M1':'syllable transform','proj.p2M2':'hot path','proj.p2M3':'input methods','proj.viewCrate':'View crate ↗',
+'proj.embeddedBadge':'🎮 Embedded','proj.academicOrg':'Academic / Team',
+'proj.p3Li1':'<b>TouchGFX MVP</b> architecture + screen-flow state machine separating UI, logic and HAL.',
+'proj.p3Li2':'Hex-grid snapping with O(1) LUT neighbors, <b>BFS Match-3</b>, orphan-drop, sqrt-free collision + EMA aim smoothing at <b>60 FPS</b>.',
+'proj.p3Li3':'Sub-stepped continuous collision, dirty-flag rendering, O(1) cached counts, LUT color maps, cache-friendly grid buffers.',
+'proj.p3M1':'on Cortex-M4','proj.p3M2':'LUT neighbor lookup','proj.p3M3':'match-3 chains','proj.viewRepo':'View repo ↗',
+'proj.personalOrg':'Personal',
+'proj.p4Li1':'REST API solving <b>debt simplification</b>: greedy creditor-debtor matching minimizes settlement transactions.',
+'proj.p4Li2':'Feature modules (users, groups, expenses, settlements), Strategy pattern for splits (Equal / Exact / Percentage).',
+'proj.p4Li3':'JWT + OAuth auth, Redis rate limiting + cache invalidation.',
+'proj.p4M1':'greedy settlement','proj.p4M2':'split strategies',
+'edu.eyebrow':'05 · Education &amp; languages','edu.title':'Foundations.',
+'edu.hustTime':'2023 — Present',
+'edu.hustDesc':'<b>Hanoi University of Science and Technology</b><br />Computer Engineering<br />CPA: <b>3.56</b> · GPA: <b>3.89</b>',
+'edu.hsDesc':'<b>Le Hong Phong High School for the Gifted</b><br />Mathematics Major',
+'edu.engTitle':'🌍 English','edu.engDesc':'Comfortable reading RFCs, datasheets and technical docs; daily working English for code, reviews and research.',
+'contact.eyebrow':'06 · Contact','contact.title':'Let\'s build something <span>fast &amp; reliable.</span>',
+'contact.desc':'Internships, backend/systems roles, or QUIC/Rust talk — my inbox is open.',
+'contact.sayHello':'✉ Say hello','contact.copyEmail':'⧉ Copy email','contact.copied':'✓ Copied!',
+'contact.footer':'© {year} Dao Trong Nguyen · Built as a single HTML file.','contact.toTop':'Back to top'
+},
+vi:{
+'meta.title':'Đào Trọng Nguyên — Kỹ sư Backend & Systems',
+'meta.desc':'Portfolio của Đào Trọng Nguyên, Kỹ sư Backend & Systems chuyên về hệ phân tán, đồng thời cao, mạng độ trễ thấp với Rust.',
+'nav.about':'Giới thiệu','nav.skills':'Kỹ năng','nav.experience':'Kinh nghiệm','nav.projects':'Dự án','nav.education':'Học vấn','nav.contact':'Liên hệ','nav.hire':'Hợp tác',
+'nav.themeTitle':'Đổi giao diện','nav.langTitle':'Switch to English','nav.cvTitle':'Xem CV (PDF)','nav.menuTitle':'Menu',
+'hero.status':'Đang tìm cơ hội Backend / Systems · Hà Nội, VN',
+'hero.lead':'Tôi là kỹ sư <b>Backend &amp; Systems</b> đam mê hệ phân tán, xử lý đồng thời và giao thức mạng độ trễ thấp. Tôi xây pipeline dữ liệu throughput cao và backend production ổn định bằng <b>Rust, C/C++</b> và TypeScript hiện đại.',
+'hero.viewProjects':'Xem dự án ↓','hero.viewCv':'📄 Xem CV (.pdf)','hero.getInTouch':'✉ Liên hệ',
+'hero.stat1':'Throughput file QUIC, không HOL blocking','hero.stat2':'Hot path IME zero-alloc · LUT hex-grid','hero.stat3':'Kỹ thuật Máy tính HUST','hero.stat4':'Thực tập Backend @ VNet JSC',
+'hero.avatarSub':'Hà Nội, Việt Nam · TOEIC 600 (R-L)',
+'typed.words':['hệ phân tán.','đồng thời cao.','mạng QUIC độ trễ thấp.','async Rust + Tokio.','I/O zero-copy.','backend production resilient.'],
+'about.eyebrow':'01 · Giới thiệu','about.title':'Tư duy hệ thống, chuẩn production.','about.desc':'Tôi thích đào sâu under the hood — mô hình concurrency, memory layout, cache, backpressure — để xây backend nhanh và vững dưới tải.',
+'about.objTitle':'◈ Mục tiêu','about.objDesc':'Tôi theo đuổi hệ phân tán, xử lý đồng thời và giao thức mạng độ trễ thấp. Tôi dùng lập trình systems (Rust, C/C++) để xây pipeline dữ liệu throughput cao, hạ tầng mạng và backend production vững chắc.',
+'about.aiTitle':'✦ Cách tôi dùng AI trong công việc','about.aiLi1':'<b>Reverse engineering &amp; R&amp;D:</b> đọc RFC, datasheet phần cứng và code low-level với sự hỗ trợ của LLM.','about.aiLi2':'<b>QA &amp; testing tự động:</b> sinh test suite, test hồi quy concurrency và edge case property-based.',
+'skills.eyebrow':'02 · Kỹ năng cốt lõi','skills.title':'Kỹ sư backend, nền tảng systems.','skills.desc':'Từ C bare-metal tới async Rust tới API TypeScript — chỉ một tư duy: bytes, concurrency, cách hệ thống lỗi.',
+'skills.langTitle':'Ngôn ngữ','skills.langMeta':'thành thạo → dùng được','skills.sysTitle':'Hệ thống &amp; Mạng','skills.sysMeta':'linux · giao thức · nhúng','skills.beTitle':'Backend &amp; Cơ sở dữ liệu','skills.beMeta':'async runtime → data layer','skills.thinkTitle':'Tư duy hệ thống','skills.thinkMeta':'thứ giúp hệ thống chịu tải',
+'exp.eyebrow':'03 · Kinh nghiệm','exp.title':'Nơi tôi đã làm việc.',
+'exp.job1Time':'05/2024 — 10/2024 · 5 tháng · Hà Nội','exp.job1Title':'Thực tập Backend Developer',
+'exp.job1Li1':'Thiết kế <b>QUIC-Chat (vchat)</b>: chat E2EE gom control, tin nhắn, presence datagram và gửi file trên một kết nối QUIC/UDP.',
+'exp.job1Li2':'QoS ưu tiên stream + blob streaming kiểu Threema, <b>&gt;150 MB/s</b> không head-of-line blocking.',
+'exp.job1Li3':'Quản lý vòng đời Tokio theo actor, dùng <span style="font-family:var(--mono)">Bytes</span> zero-copy, backpressure, mã hóa Double-Ratchet/X25519.',
+'exp.job2Time':'2023 — Nay · Open source','exp.job2Title':'Builder &amp; researcher độc lập',
+'exp.job2Li1':'Đưa crate Rust lên <b>crates.io</b>, làm backend chia tiền nhóm (debt-simplification) và game engine STM32 chạy 60 FPS.',
+'exp.job2Li2':'Workflow: R&amp;D RFC/datasheet với LLM → thiết kế systems → test property-based + hồi quy concurrency.',
+'proj.eyebrow':'04 · Dự án &amp; nghiên cứu','proj.title':'Những thứ sinh ra để nhanh.','proj.desc':'Bốn hệ thống tôi thiết kế end-to-end — protocol, engine, nhúng và API. Mỗi cái đều có một con số tôi tự hào.',
+'proj.p1Li1':'Gom control, chat realtime, datagram presence/typing + gửi file trên một kết nối QUIC/UDP.',
+'proj.p1Li2':'QoS ưu tiên stream (Control=90, Chat=80, File=0) + blob streaming — <b>&gt;150 MB/s</b>, không head-of-line blocking.',
+'proj.p1Li3':'Vòng đời kết nối theo actor, <span style="font-family:var(--mono)">Bytes</span> zero-copy, backpressure tốt, E2EE Double-Ratchet.',
+'proj.p1M1':'truyền file','proj.p1M2':'stream, 1 kết nối','proj.p1M3':'nghẽn head-of-line',
+'proj.p2Li1':'IME core tiếng Việt siêu nhanh hỗ trợ <b>Telex, VNI, VIQR</b>, đã publish lên crates.io.',
+'proj.p2Li2':'DFA lai + parser rule-based với <b>hot path zero-allocation</b>, transform âm tiết O(1).',
+'proj.p2Li3':'Giao diện C-FFI + WASM cho desktop, mobile và browser.',
+'proj.p2M1':'transform âm tiết','proj.p2M2':'hot path','proj.p2M3':'kiểu gõ','proj.viewCrate':'Xem crate ↗',
+'proj.embeddedBadge':'🎮 Nhúng','proj.academicOrg':'Học thuật / Nhóm',
+'proj.p3Li1':'Kiến trúc <b>TouchGFX MVP</b> + state machine chuyển màn hình, tách UI, logic và HAL.',
+'proj.p3Li2':'Căn lưới hex-grid bằng neighbor LUT O(1), <b>BFS Match-3</b>, xử lý orphan-drop, va chạm không cần sqrt + làm mượt ngắm EMA ở <b>60 FPS</b>.',
+'proj.p3Li3':'Va chạm liên tục chia sub-step, render dirty-flag, đếm cache O(1), map màu bằng LUT, buffer lưới thân thiện cache.',
+'proj.p3M1':'trên Cortex-M4','proj.p3M2':'tra cứu neighbor LUT','proj.p3M3':'chuỗi match-3','proj.viewRepo':'Xem repo ↗',
+'proj.personalOrg':'Cá nhân',
+'proj.p4Li1':'Backend REST API giải <b>bài toán gộp nợ</b>: matching creditor-debtor kiểu greedy để giảm số giao dịch quyết toán.',
+'proj.p4Li2':'Module theo feature (users, groups, expenses, settlements), Strategy cho split (Equal/Exact/Percentage).',
+'proj.p4Li3':'Auth JWT + OAuth, rate limiting và invalidate cache bằng Redis.',
+'proj.p4M1':'quyết toán greedy','proj.p4M2':'chiến lược split',
+'edu.eyebrow':'05 · Học vấn &amp; ngoại ngữ','edu.title':'Nền tảng.',
+'edu.hustTime':'2023 — Nay',
+'edu.hustDesc':'<b>Đại học Bách khoa Hà Nội</b><br />Kỹ thuật Máy tính<br />CPA: <b>3.56</b> · GPA: <b>3.89</b>',
+'edu.hsDesc':'<b>THPT Chuyên Lê Hồng Phong</b><br />Chuyên Toán',
+'edu.engTitle':'🌍 Tiếng Anh','edu.engDesc':'Đọc tốt RFC, datasheet và tài liệu kỹ thuật; tiếng Anh làm việc hằng ngày cho code, review và research.',
+'contact.eyebrow':'06 · Liên hệ','contact.title':'Cùng xây thứ gì đó <span>nhanh &amp; tin cậy.</span>',
+'contact.desc':'Thực tập, vị trí backend/systems hay chuyện QUIC/Rust — inbox luôn mở.',
+'contact.sayHello':'✉ Nhắn tin','contact.copyEmail':'⧉ Copy email','contact.copied':'✓ Đã copy!',
+'contact.footer':'© {year} Đào Trọng Nguyên · Xây bằng một file HTML duy nhất.','contact.toTop':'Về đầu trang'
+}};
+let currentLang='en';
+function t(lang,key){return (I18N[lang]&&I18N[lang][key]!=null)?I18N[lang][key]:(I18N.en[key]!=null?I18N.en[key]:null)}
+function setLang(lang){if(!I18N[lang])lang='en';currentLang=lang;
+document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');let v=t(lang,k);if(v==null)return;if(k==='contact.footer'){v=v.replace('{year}',new Date().getFullYear())}el.innerHTML=v});
+document.querySelectorAll('[data-i18n-title]').forEach(el=>{const k=el.getAttribute('data-i18n-title');const v=t(lang,k);if(v!=null)el.setAttribute('title',v)});
+document.documentElement.lang=lang;document.title=t(lang,'meta.title');
+const md=document.querySelector('meta[name="description"]');if(md)md.setAttribute('content',t(lang,'meta.desc'));
+const lt=document.getElementById('langToggle');if(lt)lt.textContent=(lang==='en'?'VI':'EN');
+try{localStorage.setItem('portfolio_lang',lang)}catch(e){}
+startTyping(t(lang,'typed.words')||I18N.en['typed.words']);
+const cb=document.getElementById('copyEmail');if(cb&&!cb.dataset.copied)cb.innerHTML=t(lang,'contact.copyEmail')}
+/* Copy + year (lang-aware) */
+document.getElementById('copyEmail').onclick=async e=>{const btn=e.currentTarget;try{await navigator.clipboard.writeText('nguyen10t2lhp@gmail.com');btn.dataset.copied='1';btn.textContent=t(currentLang,'contact.copied');setTimeout(()=>{delete btn.dataset.copied;btn.textContent=t(currentLang,'contact.copyEmail')},1800)}catch{location.href='mailto:nguyen10t2lhp@gmail.com'}};
 document.getElementById('year').textContent=new Date().getFullYear();
+/* Lang toggle + init */
+document.getElementById('langToggle').onclick=()=>setLang(currentLang==='en'?'vi':'en');
+setLang((()=>{try{const s=localStorage.getItem('portfolio_lang');if(s==='en'||s==='vi')return s}catch(e){}return (navigator.language||'en').toLowerCase().startsWith('vi')?'vi':'en'})());
 </script>
 </body>
 </html>
