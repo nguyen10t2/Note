@@ -13,8 +13,8 @@
     y="132"
     text-anchor="middle"
     dominant-baseline="central"
-    font-family="Inter, 'Segoe UI', Arial, sans-serif"
-    font-weight="900"
+    font-family="'JetBrains Mono', monospace"
+    font-weight="700"
     font-size="118"
     letter-spacing="-4"
     fill="#06060E">DN</text>
